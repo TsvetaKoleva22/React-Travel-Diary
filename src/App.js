@@ -15,6 +15,7 @@ import Header from './common/Header';
 import Footer from './common/Footer';
 
 import Home from './views/Home';
+import About from './views/About';
 import Register from './views/Register';
 import Login from './views/Login';
 import CreateAdventure from './views/CreateAdventure';
@@ -272,6 +273,7 @@ class App extends Component {
           <Route path='/' exact render={() => (
             <Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)}
           />
+          <Route path='/about' component={About} />
           <Route path='/register' render={() => <Register registerUser={this.registerUser} username={this.state.username} />} />
           <Route path='/login' render={() => <Login loginUser={this.loginUser} username={this.state.username} />} />
           <Route path='/logout' render={() => <Logout logout={this.logout} />} />

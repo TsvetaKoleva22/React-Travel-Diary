@@ -7,7 +7,7 @@ function Header(props) {
     return (
         <header>
             <nav className="navbar-menu">
-                <Link id="navimage" to="/"><img id="compass" src={logo} alt="logo" /></Link>
+                <Link id="navimage" to="/about"><img id="compass" src={logo} alt="logo" /></Link>
                 <Link to="/" className="active" aria-current="page">Home</Link>
                 <Link to="/alladvs">All Adventures</Link>
                 {

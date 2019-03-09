@@ -86,6 +86,11 @@ nav.navbar-menu a:hover {
     margin: 0 auto;
 }
 
+.aboutPar{
+    margin: 20px;
+    font-size: 16px;
+}
+
 div.welcome-wrapper {
     width: 70%;
     margin: 0 auto;
