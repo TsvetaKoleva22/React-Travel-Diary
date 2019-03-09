@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class EditAdventure extends Component {
     constructor(props) {
@@ -35,11 +36,13 @@ class EditAdventure extends Component {
         event.preventDefault();
         let id = this.props.match.params.advid;
         this.props.editAdventure(this.state, id);
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
 
     render() {
-
+        if (this.props.hasFetched) {
+            return <Redirect to="/" />
+        }
         return (
             <div className="form-wrapper">
                 <h1 className="allHeading">Edit adventure</h1>

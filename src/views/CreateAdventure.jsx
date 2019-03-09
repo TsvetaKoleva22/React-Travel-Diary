@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class CreateAdventure extends Component {
     constructor(props) {
@@ -25,11 +26,13 @@ class CreateAdventure extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.createAdventure(this.state);
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
 
     render() {
-
+        if (this.props.hasFetched) {
+            return <Redirect to="/" />
+        }
         return (
             <div className="form-wrapper">
                 <h1 className="allHeading">Add new adventure</h1>

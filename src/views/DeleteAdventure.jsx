@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
 
 class DeleteAdventure extends Component {
     constructor(props) {
@@ -33,10 +35,13 @@ class DeleteAdventure extends Component {
         event.preventDefault();
         let id = this.props.match.params.advid;
         this.props.deleteAdventure(id);
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
 
     render() {
+        if (this.props.hasFetched) {
+            return <Redirect to="/" />
+        }
         return (
             <div className="form-wrapper">
                 <h1 style={{color: 'crimson'}}>Delete adventure</h1>

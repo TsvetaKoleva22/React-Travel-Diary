@@ -43,7 +43,8 @@ class App extends Component {
       username: null,
       isAdmin: false,
       adventures: [],
-      categories: []
+      categories: [],
+      hasFetched: false
     }
 
     this.registerUser = this.registerUser.bind(this);
@@ -67,6 +68,8 @@ class App extends Component {
           for (let er in body.errors) {
             toast.error(body.errors[er], { closeButton: false });
           }
+        }  else if (body.success === false) { //user already exists! dava go samo kato message!
+          toast.error(body.message, { closeButton: false });
         } else {
           this.loginUser(userData, body.message)
         }
@@ -124,9 +127,23 @@ class App extends Component {
     createAdventureFetch(advData)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
+        if (body.success === false && body.errors) {
+          toast.warn(body.message, { closeButton: false });
+          for (let er in body.errors) {
+            toast.error(body.errors[er], { closeButton: false });
+          }
+          this.setState({
+            hasFetched: false
+          })
+        } else if (body.success === false) {
           toast.error(body.message, { closeButton: false });
+          this.setState({
+            hasFetched: false
+          })
         } else {
+          this.setState({
+            hasFetched: true
+          })
           this.getAllAdvs(body.message);
         }
       })
@@ -138,7 +155,13 @@ class App extends Component {
         //console.log(body);
         if (body.success === false) {
           toast.error(body.message, { closeButton: false });
+          this.setState({
+            hasFetched: false
+          })
         } else {
+          this.setState({
+            hasFetched: true
+          })
           this.getAllAdvs(body.message);
         }
       })
@@ -150,7 +173,13 @@ class App extends Component {
         //console.log(body);
         if (body.success === false) {
           toast.error(body.message, { closeButton: false });
+          this.setState({
+            hasFetched: false
+          })
         } else {
+          this.setState({
+            hasFetched: true
+          })
           this.getAllAdvs(body.message);
         }
       })
@@ -160,9 +189,23 @@ class App extends Component {
     createCatFetch(catData)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
+        if (body.success === false && body.errors) {
+          toast.warn(body.message, { closeButton: false });
+          for (let er in body.errors) {
+            toast.error(body.errors[er], { closeButton: false });
+          }
+          this.setState({
+            hasFetched: false
+          })
+        } else if (body.success === false) {
           toast.error(body.message, { closeButton: false });
+          this.setState({
+            hasFetched: false
+          })
         } else {
+          this.setState({
+            hasFetched: true
+          })
           this.getAllCats(body.message);
         }
       })
@@ -176,9 +219,9 @@ class App extends Component {
           toast.success(mesFromPrevTask, { closeButton: false });
         }
         this.setState({
-          adventures: body
+          adventures: body,
+          hasFetched: false
         })
-        return <Redirect to='/' />
       })
   }
 
@@ -190,9 +233,9 @@ class App extends Component {
           toast.success(mesFromPrevTask, { closeButton: false });
         }
         this.setState({
-          categories: body
+          categories: body,
+          hasFetched: false
         })
-        return <Redirect to='/allcats' />
       })
   }
 
@@ -217,7 +260,6 @@ class App extends Component {
         isAdmin: false
       })
     }
-
   }
 
 
@@ -238,12 +280,6 @@ class App extends Component {
             <AllAdventures adventures={this.state.adventures} />)}
           />
 
-          <Route path='/advcreate' render={(props) => (
-            this.state.username ?
-              (<CreateAdventure createAdventure={this.createAdventure} categories={this.state.categories} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
           <Route path='/myposts' exact render={() => (
             this.state.username ?
               (<MyPosts adventures={this.state.adventures} />)
@@ -254,21 +290,27 @@ class App extends Component {
             <Details adventures={this.state.adventures} isAdmin={this.state.isAdmin} {...props} />
           )} />
 
+          <Route path='/advcreate' render={(props) => (
+            this.state.username ?
+              (<CreateAdventure createAdventure={this.createAdventure} categories={this.state.categories} hasFetched={this.state.hasFetched} {...props} />)
+              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
+          )} />
+
           <Route path='/edit/:advid' exact render={(props) => (
             this.state.username ?
-              (<EditAdventure editAdventure={this.editAdventure} adventures={this.state.adventures} {...props} />)
+              (<EditAdventure editAdventure={this.editAdventure} adventures={this.state.adventures} hasFetched={this.state.hasFetched} {...props} />)
               : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
           )} />
 
           <Route path='/delete/:advid' exact render={(props) => (
             this.state.username ?
-              (<DeleteAdventure deleteAdventure={this.deleteAdventure} adventures={this.state.adventures} {...props} />)
+              (<DeleteAdventure deleteAdventure={this.deleteAdventure} adventures={this.state.adventures} hasFetched={this.state.hasFetched} {...props} />)
               : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
           )} />
 
           <Route path='/createcategory' render={(props) => (
             this.state.isAdmin ?
-              (<CreateCategory createCategory={this.createCategory} {...props} />)
+              (<CreateCategory createCategory={this.createCategory} hasFetched={this.state.hasFetched} {...props} />)
               : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
           )} />
 

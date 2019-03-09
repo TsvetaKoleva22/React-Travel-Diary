@@ -25,9 +25,9 @@ function validateAdvCreateForm(payload) {
     errors.name = 'Destination must be at least 5 symbols.'
   }
 
-  if (!payload || typeof payload.description !== 'string' || payload.description.length < 10 || payload.description.length > 250) {
+  if (!payload || typeof payload.description !== 'string' || payload.description.length < 10 || payload.description.length > 500) {
     isFormValid = false
-    errors.description = 'Description must be at least 10 symbols and less than 250 symbols.'
+    errors.description = 'Description must be at least 10 symbols and less than 500 symbols.'
   }
 
 
