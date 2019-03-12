@@ -10,22 +10,14 @@ import { registerFetch, loginFetch } from './services/auth-service';
 import { getAllAdventuresFetch, createAdventureFetch, editAdventureFetch, deleteAdventureFetch } from './services/advs-service';
 import { createCatFetch, getAllCatsFetch } from './services/cat-service';
 
-
-import Header from './common/Header';
-import Footer from './common/Footer';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 
 import Home from './views/Home';
 import About from './views/About';
-import Register from './views/Register';
-import Login from './views/Login';
-import CreateAdventure from './views/CreateAdventure';
-import AllAdventures from './views/AllAdventures';
-import MyPosts from './views/MyPosts';
-import Details from './views/Details';
-import EditAdventure from './views/EditAdventure';
-import DeleteAdventure from './views/DeleteAdventure';
-import CreateCategory from './views/CreateCategory';
-import AllCategories from './views/AllCategories';
+import UserMain from './views/user/UserMain';
+import AdvMain from './views/adventures/AdvMain';
+import CategoryMain from './views/categories/CategoryMain';
 
 const NotFound = () => {
   return <h2>UUUUPPS, 404 - Page not found!</h2>
@@ -57,7 +49,6 @@ class App extends Component {
     this.createCategory = this.createCategory.bind(this);
     this.getAllAdvs = this.getAllAdvs.bind(this);
     this.getAllCats = this.getAllCats.bind(this);
-
   }
 
   registerUser(userData) {
@@ -69,7 +60,7 @@ class App extends Component {
           for (let er in body.errors) {
             toast.error(body.errors[er], { closeButton: false });
           }
-        }  else if (body.success === false) { //user already exists! dava go samo kato message!
+        } else if (body.success === false) { //user already exists! dava go samo kato message!
           toast.error(body.message, { closeButton: false });
         } else {
           this.loginUser(userData, body.message)
@@ -273,53 +264,40 @@ class App extends Component {
           <Route path='/' exact render={() => (
             <Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)}
           />
+
           <Route path='/about' component={About} />
-          <Route path='/register' render={() => <Register registerUser={this.registerUser} username={this.state.username} />} />
-          <Route path='/login' render={() => <Login loginUser={this.loginUser} username={this.state.username} />} />
+
+          <Route path='/user' render={(props) =>
+            <UserMain
+              registerUser={this.registerUser}
+              loginUser={this.loginUser}
+              username={this.state.username}
+              {...props}
+            />} />
+
           <Route path='/logout' render={() => <Logout logout={this.logout} />} />
 
-          <Route path='/alladvs' exact render={() => (
-            <AllAdventures adventures={this.state.adventures} />)}
-          />
+          <Route path='/adventure' render={(props) => (
+            <AdvMain
+              createAdventure={this.createAdventure}
+              editAdventure={this.editAdventure}
+              deleteAdventure={this.deleteAdventure}
+              {...this.state}
+              {...props}
+            />)} />
 
-          <Route path='/myposts' exact render={() => (
-            this.state.username ?
-              (<MyPosts adventures={this.state.adventures} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
-          <Route path='/details/:advid' exact render={(props) => (
-            <Details adventures={this.state.adventures} isAdmin={this.state.isAdmin} {...props} />
-          )} />
-
-          <Route path='/advcreate' render={(props) => (
-            this.state.username ?
-              (<CreateAdventure createAdventure={this.createAdventure} categories={this.state.categories} hasFetched={this.state.hasFetched} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
-          <Route path='/edit/:advid' exact render={(props) => (
-            this.state.username ?
-              (<EditAdventure editAdventure={this.editAdventure} adventures={this.state.adventures} hasFetched={this.state.hasFetched} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
-          <Route path='/delete/:advid' exact render={(props) => (
-            this.state.username ?
-              (<DeleteAdventure deleteAdventure={this.deleteAdventure} adventures={this.state.adventures} hasFetched={this.state.hasFetched} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
-          <Route path='/createcategory' render={(props) => (
+          <Route path='/category' render={(props) => (
             this.state.isAdmin ?
-              (<CreateCategory createCategory={this.createCategory} hasFetched={this.state.hasFetched} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
-          )} />
-
-          <Route path='/allcats' render={(props) => (
-            this.state.isAdmin ?
-              (<AllCategories categories={this.state.categories} {...props} />)
-              : (<Home username={this.state.username} isAdmin={this.state.isAdmin} adventures={this.state.adventures} />)
+              (<CategoryMain
+                createCategory={this.createCategory}
+                categories={this.state.categories}
+                hasFetched={this.state.hasFetched}
+                {...props} />)
+              : (<Home
+                username={this.state.username}
+                isAdmin={this.state.isAdmin}
+                adventures={this.state.adventures}
+              />)
           )} />
 
           <Route component={NotFound} />

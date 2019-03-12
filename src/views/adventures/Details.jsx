@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import DetailsSingleAdv from '../components/DetailsSingleAdv';
+import DetailsSingleAdv from '../../components/DetailsSingleAdv';
 
 function Details(props) {
     let arr = props.adventures.filter(adv => adv._id.toString() === props.match.params.advid.toString());
@@ -18,14 +18,14 @@ function Details(props) {
                     {
                         sessionStorage.getItem('username') === currAdv.author ?
                             (<Fragment>
-                                <Link type="button" to={'/edit/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ marginRight: '40px' }} >Edit</Link>
-                                <Link type="button" to={'/delete/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ background: 'red' }} >Delete</Link>
+                                <Link type="button" to={'/adventure/edit/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ marginRight: '40px' }} >Edit</Link>
+                                <Link type="button" to={'/adventure/delete/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ background: 'red' }} >Delete</Link>
                             </Fragment>)
                             : null
                     }
                     {
                         props.isAdmin ?
-                        <Link type="button" to={'/delete/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ background: 'red' }} >Delete</Link>
+                        <Link type="button" to={'/adventure/delete/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ background: 'red' }} >Delete</Link>
                         : null
 
                     }

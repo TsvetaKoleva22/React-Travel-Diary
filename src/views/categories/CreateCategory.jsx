@@ -22,12 +22,12 @@ class CreateCategory extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.createCategory(this.state);
-        // this.props.history.push('/allcats');
+        // this.props.history.push('/category/all');
     }
 
     render() {
         if (this.props.hasFetched) {
-            return <Redirect to="/allcats" />
+            return <Redirect to="/category/all" />
         }
         return (
             <div className="form-wrapper">

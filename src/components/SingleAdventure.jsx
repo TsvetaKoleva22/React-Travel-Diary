@@ -20,7 +20,7 @@ function SingleAdventure(props) {
             </div>
             <div className="card-footer">
                 <small className="text-muted"></small>
-                <Link type="button" className="btn btn-primary float-center btn-sm" to={'/details/' + props.adv._id}>Details</Link>
+                <Link type="button" className="btn btn-primary float-center btn-sm" to={'/adventure/details/' + props.adv._id}>Details</Link>
             </div>
         </div>
     )

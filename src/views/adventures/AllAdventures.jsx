@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import SingleAdventure from '../components/SingleAdventure'
+import SingleAdventure from '../../components/SingleAdventure'
 
-class MyPosts extends Component {
+class AllAdventures extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,32 +17,22 @@ class MyPosts extends Component {
             return <h1>Loading....</h1>
         }
 
-        let myPosts = this.props.adventures.filter(adv => adv.author === sessionStorage.getItem('username'));
-
-
         return (
             <Fragment>
-                <h2 className="allHeading">My Posts</h2>
+                <h2 className="allHeading">All adventures</h2>
                 <div className="container">
                     <div className="row">
                         <div className="card-deck space-top">
                             {
-                                myPosts.length ?
-                                    myPosts.map(adv => <SingleAdventure adv={adv} key={adv._id} />)
-                                    :
-                                    (<div>
-                                        <h2>Sorry, you have no posts yet</h2>
-                                        <p>Hurry up and add your newest adventure now!</p>
-                                    </div>)
+                                this.props.adventures.map(adv => <SingleAdventure adv={adv} key={adv._id} />)
                             }
 
                         </div>
                     </div>
                 </div>
-
             </Fragment>
         )
     }
 }
 
-export default MyPosts;
+export default AllAdventures;
