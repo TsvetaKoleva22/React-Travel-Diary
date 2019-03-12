@@ -1,33 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import BindForm from './BindForm';
+
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: ''
-        }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleSubmit(event) {
+    handleSubmit(event, data) {
         event.preventDefault();
-        this.props.loginUser(this.state);
-
-        this.setState({
-            username: '',
-            password: ''
-        })
-    }
-
-    handleChange(event) {
-        let key = event.target.name;
-        let currValue = event.target.value;
-        this.setState({
-            [key]: currValue
-        })
+        this.props.loginUser(data);
     }
 
     render() {
@@ -37,17 +21,14 @@ class Login extends Component {
         return (
             <div className="form-wrapper">
                 <h1 className="allHeading">Login</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username" onChange={this.handleChange} value={this.state.username} id="username" placeholder="Enter username" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={this.handleChange} value={this.state.password} id="password" placeholder="Enter password" />
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
+
+                <BindForm onSubmit={this.handleSubmit} butName='Login'>
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter username" />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter password" />
+                </BindForm>
+                
             </div>
         );
     }

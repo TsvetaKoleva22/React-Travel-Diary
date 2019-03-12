@@ -37,7 +37,7 @@ class CreateCategory extends Component {
                         <label htmlFor="name">Name of the category</label>
                         <input type="text" id="name" name="name" value={this.state.name} onChange={this.handleChange} />
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Create</button>
                 </form>
             </div>
         );

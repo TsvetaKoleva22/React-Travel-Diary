@@ -54,7 +54,7 @@ class App extends Component {
   registerUser(userData) {
     registerFetch(userData)
       .then(body => {
-        //console.log(body)
+        // console.log(body)
         if (!body.success && body.errors) {
           toast.warn(body.message, { closeButton: false });
           for (let er in body.errors) {
