@@ -55,7 +55,7 @@ class DeleteAdventure extends Component {
                         <label htmlFor="destination">Destination</label>
                         <input type="text" id="destination" name="destination" value={this.state.destination} onChange={this.handleChange} disabled/>
                     </div>
-                    <button type="submit">Delete</button>
+                    <button type="submit" style={{background: 'lightcoral'}}>Delete</button>
                 </form>
             </div>
         );

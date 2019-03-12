@@ -7,12 +7,22 @@ import MyPosts from './MyPosts';
 import Details from './Details';
 import EditAdventure from './EditAdventure';
 import DeleteAdventure from './DeleteAdventure';
+import FoundAdventures from './FoundAdvs';
 import Home from '../Home';
 
 const AdvMain = (props) => {
     return (
         <Switch>
-            <Route path={props.match.path + '/all'} render={() => <AllAdventures adventures={props.adventures} />} />
+            <Route path={props.match.path + '/all'} render={() =>
+                <AllAdventures
+                    adventures={props.adventures}
+                    categories={props.categories}
+                    searchByCat={props.searchByCat}
+                />} />
+
+            <Route path={props.match.path + '/found'} exact render={() => 
+                <FoundAdventures foundAdvs={props.foundAdvs} />} />
+            
             <Route path={props.match.path + '/details/:advid'} render={(routeProps) =>
                 <Details adventures={props.adventures} isAdmin={props.isAdmin} {...routeProps} />} />
 

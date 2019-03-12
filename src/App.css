@@ -101,6 +101,16 @@ nav.navbar-menu a:hover {
     margin: 10px;
 }
 
+#searchForm{
+    width: 60%;
+}
+#searchForm button{
+    padding: 5px;
+}
+#searchForm select{
+    width: 300px;
+}
+
 div.welcome-wrapper {
     width: 70%;
     margin: 0 auto;

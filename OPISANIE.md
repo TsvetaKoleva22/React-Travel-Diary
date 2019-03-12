@@ -9,13 +9,14 @@ There are three main parts:
 1. Public part, which is accessible to everyone, without authentication. Every visitor can:  
 - view the About page (by clicking the compass logo); 
 - view the Home page, with a welcome message, shortcut buttons to the Log in and Register pages and the three most recent adventures (posts); 
-- view all available posts by visiting the All Adventures page; 
+- view all available posts by visiting the All Adventures page;
+- perform search by category; 
 - view details about each post by clicking its Details button and thus visiting the Details page; 
 - log in using the Login page (if he already has an account for our application), or
 - register using the Register page 
 
 2. Private part – only for logged in users. After successful registration the user is automatically logged in.  Now he can use the full functionality of the app: 
-- view the Home page, About page, All Adventures page and Details page for each post; 
+- view the Home page, About page, All Adventures page, Search Results page and Details page for all posts; 
 - create new adventure using the Create New Adventure page; 
 - view his own posts by going to My Posts page; 
 - edit each one of his posts (only his) by clicking the Edit button under the post and visiting the Edit Adventure page;  
@@ -23,7 +24,7 @@ There are three main parts:
 - logout. 
 
 3. Administrative part - only for admins. When the database is initiated for the first time, the server automatically seeds a user with username Admin, password Admin123 and role Admin. He has the following functions:  
-- view the Home page, About page, All Adventures page and Details page for each post; 
+- view the Home page, About page, All Adventures page, Search Results page and Details page for all posts; 
 - create new categories for the adventures using the Create New Category page; 
 - view all created categories in the All Categories page; 
 - he can delete any of the posts when he goes to the Details page, if he finds that the post is inappropriate for the app. 
@@ -38,6 +39,7 @@ The app has the following dynamic pages:
 6. Edit - a form with four fields, that are prefilled with the current info for the post. It allows the user to change the title, image, destination and/or description of the adventure;
 7. Delete - shows the image of the post and a form with two disabled prefilled fields - title and destination. Allows the user to permanently delete his post.  
 8. Create Category - for Admin only. A form with one field for the name of the new category. 
-9. All Categories - for Admin only. Shows all available categories. 
+9. All Categories - for Admin only. Shows all available categories.
+10. Search Results page - shows the results of a search by category. 
 
-Additionally the app offers Login page, Register page, About page, Not Found page (if no available route is matched) and a Logout option. 
+Additionally the app offers Login page, Register page, Logout option, About page, Not Found page (if no available route is matched) and Search by category (available on All Adventures page). 
