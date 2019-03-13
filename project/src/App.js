@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import './App.css';
 
 import { registerFetch, loginFetch } from './services/auth-service';
-import { getAllAdventuresFetch, createAdventureFetch, editAdventureFetch, deleteAdventureFetch } from './services/advs-service';
+import { getAllAdventuresFetch, createAdventureFetch, editAdventureFetch, likeAdventureFetch, deleteAdventureFetch } from './services/advs-service';
 import { createCatFetch, getAllCatsFetch } from './services/cat-service';
 
 import Header from './components/common/Header';
@@ -46,6 +46,7 @@ class App extends Component {
     this.logout = this.logout.bind(this);
     this.createAdventure = this.createAdventure.bind(this);
     this.editAdventure = this.editAdventure.bind(this);
+    this.likeAdventure = this.likeAdventure.bind(this);
     this.deleteAdventure = this.deleteAdventure.bind(this);
     this.createCategory = this.createCategory.bind(this);
     this.getAllAdvs = this.getAllAdvs.bind(this);
@@ -145,6 +146,24 @@ class App extends Component {
 
   editAdventure(advData, id) {
     editAdventureFetch(advData, id)
+      .then(body => {
+        //console.log(body);
+        if (body.success === false) {
+          toast.error(body.message, { closeButton: false });
+          this.setState({
+            hasFetched: false
+          })
+        } else {
+          this.setState({
+            hasFetched: true
+          })
+          this.getAllAdvs(body.message);
+        }
+      })
+  }
+  
+  likeAdventure(advData, id) {
+    likeAdventureFetch(advData, id)
       .then(body => {
         //console.log(body);
         if (body.success === false) {
@@ -291,6 +310,7 @@ class App extends Component {
             <AdvMain
               createAdventure={this.createAdventure}
               editAdventure={this.editAdventure}
+              likeAdventure={this.likeAdventure}
               deleteAdventure={this.deleteAdventure}
               searchByCat={this.searchByCat}
               {...this.state}

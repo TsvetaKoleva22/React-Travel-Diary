@@ -43,7 +43,9 @@ class CreateAdventure extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="category">Choose category</label>
-                        <select id="category" name="category" value={this.state.value} onChange={this.handleChange}>
+                        <select id="category" name="category" value={this.state.value} onChange={this.handleChange} defaultValue='Choose the suitable category...'>
+                            <option disabled>Choose the suitable category...</option>
+                            
                             {
                                 this.props.categories.map(cat => {
                                     return(

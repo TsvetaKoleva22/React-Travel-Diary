@@ -20,14 +20,19 @@ function validateAdvCreateForm(payload) {
     errors.image = 'Please enter valid Image URL.'
   }
 
-  if (!payload || typeof payload.destination !== 'string' || payload.destination.length < 5) {
+  if (!payload || typeof payload.destination !== 'string' || payload.destination.length < 2) {
     isFormValid = false
-    errors.name = 'Destination must be at least 5 symbols.'
+    errors.name = 'Destination must be at least 2 symbols.'
   }
 
   if (!payload || typeof payload.description !== 'string' || payload.description.length < 10 || payload.description.length > 500) {
     isFormValid = false
     errors.description = 'Description must be at least 10 symbols and less than 500 symbols.'
+  }
+
+  if (!payload || payload.category === "") {
+    isFormValid = false
+    errors.description = 'Please choose a category.'
   }
 
 
@@ -104,8 +109,6 @@ router.post('/edit/:id', (req, res) => {
       existingAdv.imageUrl = advObj.imageUrl
       existingAdv.destination = advObj.destination
       existingAdv.description = advObj.description
-      // existingAdv.author = advObj.author
-      // existingAdv.category = advObj.category
 
       existingAdv
         .save()
@@ -119,9 +122,43 @@ router.post('/edit/:id', (req, res) => {
         .catch((err) => {
           console.log(err)
           let message = 'Something went wrong :( Check the form for errors.'
-          if (err.code === 11000) {
-            message = 'Adventure with the given name already exists.'
-          }
+          return res.status(200).json({
+            success: false,
+            message: message
+          })
+        })
+    })
+    .catch((err) => {
+      console.log(err)
+      const message = 'Something went wrong :( Check the form for errors.'
+      return res.status(200).json({
+        success: false,
+        message: message
+      })
+    })
+})
+
+router.post('/like/:id', (req, res) => {
+  const advId = req.params.id
+  const advObj = req.body
+
+  Adventure
+    .findById(advId)
+    .then(existingAdv => {
+      existingAdv.likes = advObj.likes
+
+      existingAdv
+        .save()
+        .then(editedAdv => {
+          res.status(200).json({
+            success: true,
+            message: 'Like added successfully.',
+            data: editedAdv
+          })
+        })
+        .catch((err) => {
+          console.log(err)
+          let message = 'Something went wrong :( Check the form for errors.'
           return res.status(200).json({
             success: false,
             message: message

@@ -6,6 +6,14 @@ function Details(props) {
     let arr = props.adventures.filter(adv => adv._id.toString() === props.match.params.advid.toString());
     let currAdv = arr[0];
 
+    function likeBut (){
+        let newLikes = Number(currAdv.likes) + 1;
+        let obj = {
+            likes: newLikes
+        }
+        props.likeAdventure(obj, currAdv._id);
+    }
+
     return (
         <div>
             <h2 className="allHeading">{currAdv.title}</h2>
@@ -22,6 +30,11 @@ function Details(props) {
                                 <Link type="button" to={'/adventure/delete/' + currAdv._id} className="btn btn-primary float-center btn-sm" style={{ background: 'red' }} >Delete</Link>
                             </Fragment>)
                             : null
+                    }
+                    {
+                        props.username && props.username !== currAdv.author ?
+                        <button onClick={likeBut} className="btn btn-primary float-center btn-sm" id="likeButton" >&#10084; Like</button>
+                        : null
                     }
                     {
                         props.isAdmin ?

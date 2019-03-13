@@ -20,11 +20,17 @@ const AdvMain = (props) => {
                     searchByCat={props.searchByCat}
                 />} />
 
-            <Route path={props.match.path + '/found'} exact render={() => 
+            <Route path={props.match.path + '/found'} exact render={() =>
                 <FoundAdventures foundAdvs={props.foundAdvs} />} />
-            
+
             <Route path={props.match.path + '/details/:advid'} render={(routeProps) =>
-                <Details adventures={props.adventures} isAdmin={props.isAdmin} {...routeProps} />} />
+                <Details
+                    adventures={props.adventures}
+                    isAdmin={props.isAdmin}
+                    username={props.username}
+                    likeAdventure={props.likeAdventure}
+                    {...routeProps}
+                />} />
 
             {
                 props.username ?

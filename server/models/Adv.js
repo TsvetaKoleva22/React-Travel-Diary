@@ -10,6 +10,7 @@ let adventureSchema = new mongoose.Schema({
   description: {type: mongoose.Schema.Types.String},
   author: {type: mongoose.Schema.Types.String, required: REQUIRED_VALIDATION_MESSAGE},
   creationDate: {type: mongoose.Schema.Types.Date, default: Date.now},
+  likes: {type: mongoose.Schema.Types.Number, default: 0}
 })
 
 let Adventure = mongoose.model('Adventure', adventureSchema);

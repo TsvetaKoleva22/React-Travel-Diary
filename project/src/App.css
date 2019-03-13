@@ -111,6 +111,20 @@ nav.navbar-menu a:hover {
     width: 300px;
 }
 
+#likeButton{
+    background: rgb(243, 121, 227);
+    color: indigo;
+    margin-right: 40px;
+}
+
+.headingDetails{
+    text-align: center
+}
+.headingDetails span{
+    color: deeppink;
+    margin-left: 30px;
+}
+
 div.welcome-wrapper {
     width: 70%;
     margin: 0 auto;
