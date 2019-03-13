@@ -1,5 +1,5 @@
 # travel-diary2019
-##Project Assignment for ReactJS SoftUni 2019
+## Project Assignment for ReactJS SoftUni 2019
 
 The project is a single-page web application created using React.js library for the user interface and a local server build using Node.js and MongoDB for the back-end. It supports error handling and data validation and uses React Toastify to show the corresponding notifications. The client-side routing uses React-router-dom, and the styling is enhanced with the help of Bootstrap.
 The app is a kind of blog system where keen travelers can share their exciting adventures like travels to exotic destinations or amazing discoveries closer to home.
@@ -31,15 +31,15 @@ There are *three* main parts:
 * he *cannot* create posts or edit the existing ones.
 
 The app has the following *dynamic* pages:
-1. Home page - displays a welcome message, shortcut links and the three most recent posts;
-2. All Adventures - shows all available posts, each in a separate container, with its image, title, destination, author and date of creation;
-3. Add Adventure - a form with five fields - 3 input fields for title, imageUrl and destination, a textarea for the description and a select field for the category, with options corresponding to all available categories, created by the admin.
-4. My Posts - shows only the posts of the currently logged in user in a format, similar to the all posts view.
-5. Details - gives detailed info for the selected post, showing the author’s description of the adventure and the number of likes. Gives the option to like the post.
-6. Edit - a form with four fields, that are prefilled with the current info for the post. It allows the user to change the title, image, destination and/or description of the adventure;
-7. Delete - shows the image of the post and a form with two disabled prefilled fields - title and destination. Allows the user to permanently delete his post.
-8. Create Category - for Admin only. A form with one field for the name of the new category.
-9. All Categories - for Admin only. Shows all available categories.
-10. Search Results page - shows the results of a search by category.
+1. **Home page** - displays a welcome message, shortcut links and the three most recent posts;
+2. **All Adventures** - shows all available posts, each in a separate container, with its image, title, destination, author and date of creation;
+3. **Add Adventure** - a form with five fields - 3 input fields for title, imageUrl and destination, a textarea for the description and a select field for the category, with options corresponding to all available categories, created by the admin.
+4. **My Posts** - shows only the posts of the currently logged in user in a format, similar to the all posts view.
+5. **Details** - gives detailed info for the selected post, showing the author’s description of the adventure and the number of likes. Gives the option to like the post.
+6. **Edit** - a form with four fields, that are prefilled with the current info for the post. It allows the user to change the title, image, destination and/or description of the adventure;
+7. **Delete** - shows the image of the post and a form with two disabled prefilled fields - title and destination. Allows the user to permanently delete his post.
+8. **Create Category** - for Admin only. A form with one field for the name of the new category.
+9. **All Categories** - for Admin only. Shows all available categories.
+10. **Search Results page** - shows the results of a search by category.
 
-Additionally the app offers Login page, Register page, Logout option, About page, Not Found page (if no available route is matched) and Search by category (available on All Adventures page).
+**Additionally** the app offers Login page, Register page, Logout option, About page, Not Found page (if no available route is matched) and Search by category (available on All Adventures page).
