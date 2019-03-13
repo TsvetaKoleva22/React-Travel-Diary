@@ -19,7 +19,7 @@ function Header(props) {
                                         <Link to="/category/create">Create Category</Link>
                                         <Link to="/category/all">All Categories</Link>
                                     </Fragment>)
-                                    
+
                                     : (<Fragment>
                                         <Link to="/adventure/create">Add Adventure</Link>
                                         <Link to="/adventure/myposts">My Posts</Link>
@@ -33,41 +33,15 @@ function Header(props) {
                             <Link to="/user/login">Login</Link>
                         </Fragment>)
                 }
-
             </nav>
+            {
+                props.username ?
+                    <p id="hiPar">Hi, {props.username}</p>
+                    : null
+            }
         </header>
     )
 
 }
-
-// className Header extends Component {
-//     render() {
-//         return (
-
-//             <header><Link to="/" className="logo">Interactive IMDB</Link>
-//                 <div className="header-right">
-//                     <Link to="/">Home</Link>
-//                     {
-//                         this.props.username ?
-//                             (<span>
-//                                 <Link to="/">Welcome {this.props.username}!</Link>
-//                                 {
-//                                     this.props.isAdmin ?
-//                                         (<span><Link to="/create">Create</Link></span>)
-//                                         : null
-//                                 }
-//                                 <a href='#' onClick={this.props.logout}>Logout</a>
-//                             </span>)
-//                             :
-//                             (<span>
-//                                 <Link to="/register">Register</Link>
-//                                 <Link to="/login">Login</Link>
-//                             </span>)
-//                     }
-//                 </div>
-//             </header>
-//         )
-//     }
-// }
 
 export default Header;

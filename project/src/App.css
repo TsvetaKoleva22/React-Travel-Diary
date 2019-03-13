@@ -90,6 +90,11 @@ nav.navbar-menu a:hover {
     margin: 20px;
     font-size: 16px;
 }
+#hiPar{
+    text-align: right;
+    margin-right: 20px;
+    color: white;
+}
 
 .userForm input{
     text-align: left;

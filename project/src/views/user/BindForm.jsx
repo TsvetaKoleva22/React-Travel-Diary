@@ -35,6 +35,7 @@ class BindForm extends Component {
                             return child;
                         })
                     }
+                    <br></br>
                     <button type="submit">{this.props.butName}</button>
                 </form>
             </div>

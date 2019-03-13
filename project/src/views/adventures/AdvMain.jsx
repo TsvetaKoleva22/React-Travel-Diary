@@ -18,6 +18,7 @@ const AdvMain = (props) => {
                     adventures={props.adventures}
                     categories={props.categories}
                     searchByCat={props.searchByCat}
+                    isAdmin={props.isAdmin}
                 />} />
 
             <Route path={props.match.path + '/found'} exact render={() =>
