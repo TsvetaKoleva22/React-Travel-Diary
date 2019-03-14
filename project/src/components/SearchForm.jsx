@@ -23,7 +23,7 @@ class SearchForm extends Component {
 
     render() {
         return (
-            <div className="form-wrapper">
+            <div className="form-wrapper" style={{paddingBottom: '10px'}}>
                 <form onSubmit={this.handleSubmit} id="searchForm">
                     <select id="category" name="category" value={this.state.value} 
                         onChange={this.handleChange} defaultValue='Search by category...'>
