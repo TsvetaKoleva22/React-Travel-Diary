@@ -1,7 +1,7 @@
 # travel-diary2019
 ## Project Assignment for ReactJS SoftUni 2019
 
-The project is a single-page web application created using React.js library for the user interface and a local server build using Node.js and MongoDB for the back-end. It supports error handling and data validation and uses React Toastify to show the corresponding notifications. The client-side routing uses React-router-dom, and the styling is enhanced with the help of Bootstrap.
+The project is a single-page web application created using React.js library for the user interface and a local server built using Node.js and MongoDB for the back-end. It supports error handling and data validation and uses React Toastify to show the corresponding notifications. The client-side routing uses React-router-dom, and the styling is enhanced with the help of Bootstrap.
 
 The app is a kind of blog system where keen travelers can share their exciting adventures like travels to exotic destinations or amazing discoveries closer to home.
 

@@ -21,13 +21,17 @@ class AllAdventures extends Component {
 
     render() {
         if (!this.props.adventures.length) {
-            return <h1>Sorry, no adventures yet....
+            return (<Fragment>
+                <h2 className="allHeading">All adventures</h2>
+                <h3>Sorry, no adventures yet....
                 {
-                    this.props.isAdmin ?
-                        null :
-                        <span>Be the first to add one!</span>
-                }
-            </h1>
+                        this.props.isAdmin ?
+                            null :
+                            <span>Be the first to add one!</span>
+                    }
+                </h3>
+            </Fragment>
+            )
         }
 
         if (this.state.searchDone) {
@@ -38,7 +42,7 @@ class AllAdventures extends Component {
             <Fragment>
                 <h2 className="allHeading">All adventures</h2>
                 <SearchForm categories={this.props.categories} searchByCat={this.props.searchByCat} changeSearchStatus={this.changeSearchStatus} />
-                <div style={{margin: '0px 40px'}}>
+                <div style={{ margin: '0px 40px' }}>
                     <div className="row">
                         <div className="card-deck space-top">
                             {
