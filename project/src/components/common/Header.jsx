@@ -36,7 +36,7 @@ function Header(props) {
             </nav>
             {
                 props.username ?
-                    <p id="hiPar">Hi, {props.username}</p>
+                    <p id="hi-par">Hi, {props.username}</p>
                     : null
             }
         </header>

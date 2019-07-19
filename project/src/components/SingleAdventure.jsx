@@ -16,7 +16,7 @@ function SingleAdventure(props) {
                 <h4 className="card-title">{props.adv.title}</h4>
                 <p className="card-text">Destination: {props.adv.destination}</p>
                 <p className="card-text">Author: {props.adv.author}</p>
-                <p className="datePar">Added on: {dateToShow}</p>            
+                <p className="date-line">Added on: {dateToShow}</p>            
             </div>
             <div className="card-footer">
                 <small className="text-muted"></small>

@@ -1,3 +1,12 @@
+function getAuthHeader(){
+    let jwt = sessionStorage.getItem('token');
+    if(jwt && jwt.length){
+        return {'Authorization': `Bearer ${jwt}`};
+    } else{
+        return {};
+    }
+}
+
 export const getAllAdventuresFetch = function () {
     return fetch('http://localhost:5000/adv/all')
         .then(function (results) {
@@ -9,10 +18,13 @@ export const getAllAdventuresFetch = function () {
 }
 
 export const createAdventureFetch = function (advData) {
+    const authHeader = getAuthHeader();
+
     return fetch('http://localhost:5000/adv/create', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            ...authHeader
         },
         body: JSON.stringify(advData)
         })
@@ -25,10 +37,13 @@ export const createAdventureFetch = function (advData) {
 }
 
 export const editAdventureFetch = function (advData, id) {
+    const authHeader = getAuthHeader();
+
     return fetch(`http://localhost:5000/adv/edit/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            ...authHeader
         },
         body: JSON.stringify(advData)
         })
@@ -41,10 +56,13 @@ export const editAdventureFetch = function (advData, id) {
 }
 
 export const likeAdventureFetch = function (advData, id) {
+    const authHeader = getAuthHeader();
+
     return fetch(`http://localhost:5000/adv/like/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            ...authHeader
         },
         body: JSON.stringify(advData)
         })
@@ -57,8 +75,14 @@ export const likeAdventureFetch = function (advData, id) {
 }
 
 export const deleteAdventureFetch = function (id) {
+    const authHeader = getAuthHeader();
+
     return fetch(`http://localhost:5000/adv/delete/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            ...authHeader
+        },
         })
         .then(function (response) {
             return response.json();

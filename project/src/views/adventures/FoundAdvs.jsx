@@ -6,7 +6,7 @@ class FoundAdventures extends Component {
         if (!this.props.foundAdvs.length) {
             return (
                 <Fragment>
-                    <h2 className="allHeading">Search results:</h2>
+                    <h2 className="all-heading">Search results:</h2>
                     <h4 style={{textAlign:'center'}}>Sorry, no adventures in this category yet....</h4>
                     <h4 style={{textAlign:'center'}}>Be the first to add one!</h4>
                 </Fragment>
@@ -15,7 +15,7 @@ class FoundAdventures extends Component {
 
         return (
             <Fragment>
-                <h2 className="allHeading">Search results:</h2>
+                <h2 className="all-heading">Search results:</h2>
                 <div className="container">
                     <div className="row">
                         <div className="card-deck space-top">

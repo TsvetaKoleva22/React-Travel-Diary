@@ -1,11 +1,11 @@
 {
-  "name": "pizza-lab-system",
+  "name": "travel-diary-react",
   "version": "0.0.1",
-  "description": "Pizza Lab",
+  "description": "Travel Diary React",
   "main": "index.js",
   "keywords": [
-    "pizza",
-    "system"
+    "travel",
+    "react"
   ],
   "author": "PA",
   "license": "MIT",

@@ -16,9 +16,9 @@ function Details(props) {
 
     return (
         <div>
-            <h2 className="allHeading">{currAdv.title}</h2>
-            <div className="card col-6 contDet">
-                <img className="imgDet" src={currAdv.imageUrl} alt={currAdv.title} />
+            <h2 className="all-heading">{currAdv.title}</h2>
+            <div className="card col-6 cont-details">
+                <img className="img-details" src={currAdv.imageUrl} alt={currAdv.title} />
 
                 <DetailsSingleAdv adv={currAdv}/>
 
@@ -33,7 +33,7 @@ function Details(props) {
                     }
                     {
                         props.username && props.username !== currAdv.author ?
-                        <button onClick={likeBut} className="btn btn-primary float-center btn-sm" id="likeButton" >&#10084; Like</button>
+                        <button onClick={likeBut} className="btn btn-primary float-center btn-sm" id="like-button" >&#10084; Like</button>
                         : null
                     }
                     {

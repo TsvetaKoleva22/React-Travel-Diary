@@ -45,7 +45,7 @@ class DeleteAdventure extends Component {
         return (
             <div className="form-wrapper">
                 <h1 style={{color: 'crimson'}}>Delete adventure</h1>
-                <img src={this.state.imageUrl} alt={this.state.title} style={{marginBottom: '15px', border: '10px solid white'}}/>
+                <img src={this.state.imageUrl} alt={this.state.title} id="img-delete"/>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="title">Title</label>

@@ -122,25 +122,32 @@ class App extends Component {
     createAdventureFetch(advData)
       .then(body => {
         //console.log(body);
-        if (body.success === false && body.errors) {
-          toast.warn(body.message, { closeButton: false });
-          for (let er in body.errors) {
-            toast.error(body.errors[er], { closeButton: false });
+        if(body){
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
           }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
-          this.setState({
-            hasFetched: false
-          })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
-        }
+        }       
       })
   }
 
@@ -148,16 +155,24 @@ class App extends Component {
     editAdventureFetch(advData, id)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+
+        if(body){
+          if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
         }
       })
   }
@@ -166,16 +181,24 @@ class App extends Component {
     likeAdventureFetch(advData, id)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+
+        if(body){
+          if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
         }
       })
   }
@@ -184,16 +207,24 @@ class App extends Component {
     deleteAdventureFetch(id)
       .then(body => {
         //console.log(body);
-        if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
+
+        if(body){
+          if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllAdvs(body.message);
+          }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllAdvs(body.message);
         }
       })
   }
@@ -202,24 +233,32 @@ class App extends Component {
     createCatFetch(catData)
       .then(body => {
         //console.log(body);
-        if (body.success === false && body.errors) {
-          toast.warn(body.message, { closeButton: false });
-          for (let er in body.errors) {
-            toast.error(body.errors[er], { closeButton: false });
+
+        if(body){
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
+            toast.error(body.message, { closeButton: false });
+            this.setState({
+              hasFetched: false
+            })
+          } else {
+            this.setState({
+              hasFetched: true
+            })
+            this.getAllCats(body.message);
           }
+        } else{
+          toast.error('Unothorized 401!!!!', { closeButton: false });
           this.setState({
             hasFetched: false
           })
-        } else if (body.success === false) {
-          toast.error(body.message, { closeButton: false });
-          this.setState({
-            hasFetched: false
-          })
-        } else {
-          this.setState({
-            hasFetched: true
-          })
-          this.getAllCats(body.message);
         }
       })
   }

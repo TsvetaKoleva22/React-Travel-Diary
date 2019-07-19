@@ -20,7 +20,7 @@ class Register extends Component {
         }
         return (
             <div className="form-wrapper">
-                <h1 className="allHeading">Register</h1>
+                <h1 className="all-heading">Register</h1>
 
                 <BindForm onSubmit={this.handleSubmit} butName='Register'>
                     <label htmlFor="username">Username</label>

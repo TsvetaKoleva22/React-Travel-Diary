@@ -22,7 +22,7 @@ class AllAdventures extends Component {
     render() {
         if (!this.props.adventures.length) {
             return (<Fragment>
-                <h2 className="allHeading">All adventures</h2>
+                <h2 className="all-heading">All adventures</h2>
                 <h3>Sorry, no adventures yet....
                 {
                         this.props.isAdmin ?
@@ -40,7 +40,7 @@ class AllAdventures extends Component {
 
         return (
             <Fragment>
-                <h2 className="allHeading">All adventures</h2>
+                <h2 className="all-heading">All adventures</h2>
                 <SearchForm categories={this.props.categories} searchByCat={this.props.searchByCat} changeSearchStatus={this.changeSearchStatus} />
                 <div style={{ margin: '0px 40px' }}>
                     <div className="row">

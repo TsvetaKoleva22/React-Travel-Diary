@@ -26,7 +26,7 @@ class BindForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={(event) => this.props.onSubmit(event, this.state)} className='userForm'>
+                <form onSubmit={(event) => this.props.onSubmit(event, this.state)} className='user-form'>
                     {
                         React.Children.map(this.props.children, child => {
                             if (child.type === 'input') {

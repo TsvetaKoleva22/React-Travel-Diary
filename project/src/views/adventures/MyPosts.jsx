@@ -5,7 +5,7 @@ function MyPosts(props) {
     let myPosts = props.adventures.filter(adv => adv.author === sessionStorage.getItem('username'));
     return (
         <Fragment>
-            <h2 className="allHeading">My Posts</h2>
+            <h2 className="all-heading">My Posts</h2>
             <div className="container">
                 <div className="row">
                     <div className="card-deck space-top">

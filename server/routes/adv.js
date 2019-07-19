@@ -1,5 +1,5 @@
 const express = require('express')
-// const authCheck = require('../config/auth-check')
+const authCheck = require('../config/auth-check')
 const Adventure = require('../models/Adv')
 
 const router = new express.Router()
@@ -49,7 +49,7 @@ function validateAdvCreateForm(payload) {
 }
 
 // router.post('/create', authCheck, (req, res) => {
-router.post('/create', (req, res) => {
+router.post('/create', authCheck, (req, res) => {
   const advObj = req.body
   const validationResult = validateAdvCreateForm(advObj)
   if (!validationResult.success) {
@@ -90,7 +90,7 @@ router.get('/all', (req, res) => {
     })
 })
 
-router.post('/edit/:id', (req, res) => {
+router.post('/edit/:id', authCheck, (req, res) => {
   const advId = req.params.id
   const advObj = req.body
   const validationResult = validateAdvCreateForm(advObj)
@@ -138,7 +138,7 @@ router.post('/edit/:id', (req, res) => {
     })
 })
 
-router.post('/like/:id', (req, res) => {
+router.post('/like/:id', authCheck, (req, res) => {
   const advId = req.params.id
   const advObj = req.body
 
@@ -175,7 +175,7 @@ router.post('/like/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', authCheck, (req, res) => {
   const id = req.params.id
   Adventure
     .findById(id)
@@ -197,4 +197,4 @@ router.delete('/delete/:id', (req, res) => {
     })
 })
 
-module.exports = router
+module.exports = router;

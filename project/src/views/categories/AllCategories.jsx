@@ -19,7 +19,7 @@ class AllCategories extends Component {
 
         return (
             <Fragment>
-                <h2 className="allHeading">All categories</h2>
+                <h2 className="all-heading">All categories</h2>
                 <div className="container">
                     <div className="row">
                         <div className="card-deck space-top">

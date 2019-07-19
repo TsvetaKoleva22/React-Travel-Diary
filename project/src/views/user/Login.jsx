@@ -20,7 +20,7 @@ class Login extends Component {
         }
         return (
             <div className="form-wrapper">
-                <h1 className="allHeading">Login</h1>
+                <h1 className="all-heading">Login</h1>
 
                 <BindForm onSubmit={this.handleSubmit} butName='Login'>
                     <label htmlFor="username">Username</label>

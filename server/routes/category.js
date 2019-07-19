@@ -1,5 +1,5 @@
 const express = require('express')
-// const authCheck = require('../config/auth-check')
+const authCheck = require('../config/auth-check')
 const Category = require('../models/Category')
 
 const router = new express.Router()
@@ -25,8 +25,8 @@ function validateCatCreateForm(payload) {
   }
 }
 
-router.post('/create', (req, res) => {
-  const catObj = req.body
+router.post('/create', authCheck, (req, res) => {
+  const catObj = req.body;
 
   const validationResult = validateCatCreateForm(catObj)
   if (!validationResult.success) {
@@ -67,4 +67,4 @@ router.get('/all', (req, res) => {
     })
 })
 
-module.exports = router
+module.exports = router;

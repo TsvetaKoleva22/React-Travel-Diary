@@ -31,7 +31,7 @@ class CreateCategory extends Component {
         }
         return (
             <div className="form-wrapper">
-                <h1 className="allHeading">Add new Category</h1>
+                <h1 className="all-heading">Add new Category</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Name of the category</label>
