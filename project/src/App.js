@@ -157,7 +157,15 @@ class App extends Component {
         //console.log(body);
 
         if(body){
-          if (body.success === false) {
+          if (body.success === false && body.errors) {
+            toast.warn(body.message, { closeButton: false });
+            for (let er in body.errors) {
+              toast.error(body.errors[er], { closeButton: false });
+            }
+            this.setState({
+              hasFetched: false
+            })
+          } else if (body.success === false) {
             toast.error(body.message, { closeButton: false });
             this.setState({
               hasFetched: false
@@ -173,7 +181,7 @@ class App extends Component {
           this.setState({
             hasFetched: false
           })
-        }
+        } 
       })
   }
   
